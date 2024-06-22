@@ -1,4 +1,4 @@
-# Privoxy and Tor Proxy
+# Proxy Privoxy and Tor
 
 ![Privoxy + Tor](preview.png)
 

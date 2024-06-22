@@ -4,14 +4,6 @@
 
 A fast, minimalist proxy system using [Privoxy](https://www.privoxy.org) and [Tor](https://www.torproject.org) for unrestricted internet browsing.
 
-## Installation and running application
-
-Installation is performed from the command line with administrator rights
-
-```bash
-
-```
-
 ## Quick Start
 
 The quickest way to get started is using [docker compose](https://docs.docker.com/compose/).
@@ -19,6 +11,14 @@ The quickest way to get started is using [docker compose](https://docs.docker.co
 ```bash
 wget https://raw.githubusercontent.com/baklai/privoxy-tor-proxy/main/compose.yaml
 docker compose up --build
+```
+
+## Installation and running application
+
+Installation is performed from the command line with administrator rights
+
+```bash
+
 ```
 
 ### Building and running application
@@ -69,7 +69,7 @@ docker buildx build --platform linux/amd64,linux/arm/v7,linux/arm64/v8,linux/ppc
 docker buildx imagetools inspect baklai/privoxy-top-proxy:latest
 ```
 
-### Building and running your application
+### Running your application
 
 ```bash
 # Run docker image

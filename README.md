@@ -12,17 +12,26 @@ Installation is performed from the command line with administrator rights
 
 ```
 
-### Building and running your application
+## Quick Start
 
-When you're ready, start your application by running:
+The quickest way to get started is using [docker compose](https://docs.docker.com/compose/).
+
+```bash
+wget https://raw.githubusercontent.com/baklai/privoxy-tor-proxy/main/compose.yaml
+docker compose up --build
+```
+
+### Building and running application
+
+When you're ready, start application by running:
 
 ```bash
 docker compose up --build
 ```
 
-### Deploying your application to the cloud
+### Deploying application to the cloud
 
-First, build your image, e.g.:
+First, build docker image, e.g.:
 
 ```bash
 docker build -t baklai/privoxy-top-proxy .
@@ -45,7 +54,7 @@ docker push baklai/privoxy-top-proxy
 Consult Docker's [getting started](https://docs.docker.com/go/get-started-sharing/)
 docs for more detail on building and pushing.
 
-### Building and running your application
+### Building and running application
 
 ```bash
 # Build for current architecture

@@ -1,10 +1,8 @@
-# Privoxy Tor Proxy Docker image
-
-## Privoxy Tor Proxy System
+# Privoxy Tor Proxy System
 
 ![Privoxy + Tor](preview.png)
 
-A fast, minimalist proxy system using [Tor](https://www.torproject.org) + [Privoxy](https://www.privoxy.org) for unrestricted internet browsing.
+A fast, minimalist proxy system using [Privoxy](https://www.privoxy.org) and [Tor](https://www.torproject.org) for unrestricted internet browsing.
 
 ## Installation
 

@@ -1,6 +1,6 @@
 # Privoxy Tor Proxy Docker image
 
-Privoxy Tor Proxy System
+## Privoxy Tor Proxy System
 
 ![Privoxy + Tor](preview.png)
 
@@ -41,7 +41,7 @@ Then, push it to your registry, e.g. `docker push myregistry.com/myapp`.
 Consult Docker's [getting started](https://docs.docker.com/go/get-started-sharing/)
 docs for more detail on building and pushing.
 
-# Building
+# Building and running your application
 
 ```bash
 # Build for current architecture
@@ -56,7 +56,7 @@ docker buildx build --platform linux/amd64,linux/arm/v7,linux/arm64/v8,linux/ppc
 docker buildx imagetools inspect baklai/privoxy-top-proxy:latest
 ```
 
-# Running
+# Building and running your application
 
 ```bash
 # Run docker image

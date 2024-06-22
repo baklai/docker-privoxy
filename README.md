@@ -2,9 +2,26 @@
 
 Privoxy Tor Proxy System
 
-![Privoxy + Tor Logo](preview.png)
+![Privoxy + Tor](preview.png)
 
-Быстрая, минималистичная прокси-система на [Tor версии 0.4.3.5](https://www.torproject.org) + [Privoxy версии 3.0.28](https://www.privoxy.org) для свободного интернет серфинга.
+A fast, minimalist proxy system using [Tor](https://www.torproject.org) + [Privoxy](https://www.privoxy.org) for unrestricted internet browsing.
+
+## Installation
+
+Система доступна через [GitHub](https://github.com/baklai/ptp-system).
+
+Установка выполняется из командной строки с правами администратора
+
+```bash
+# Скачивание проекта
+$ git clone https://github.com/baklai/ptp-system.git
+
+# Переход в каталог с проектом
+$ cd ./ptp-system
+
+# Установка системы
+$ cmd install.bat
+```
 
 ### Building and running your application
 
@@ -24,35 +41,32 @@ Then, push it to your registry, e.g. `docker push myregistry.com/myapp`.
 Consult Docker's [getting started](https://docs.docker.com/go/get-started-sharing/)
 docs for more detail on building and pushing.
 
-## Установка
-
-Система доступна через [GitHub](https://github.com/baklai/ptp-system).
-
-Установка выполняется из командной строки с правами администратора
+# Building
 
 ```bash
-# Скачивание проекта
-$ git clone https://github.com/baklai/ptp-system.git
+# Build for current architecture
+docker build -t baklai/privoxy-top-proxy .
 
-# Переход в каталог с проектом
-$ cd ./ptp-system
+# Using buildx for multi-arch builds
+docker buildx create --use --name multiplatform
 
-# Установка системы
-$ cmd install.bat
+docker buildx build --platform linux/amd64,linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x -t baklai/privoxy-top-proxy --push .
+
+# Verifying images
+docker buildx imagetools inspect baklai/privoxy-top-proxy:latest
 ```
 
-## Удаление
-
-Удаление выполняется из командной строки с правами администратора
+# Running
 
 ```bash
-# Переход в каталог с проектом
-$ cd ./ptp-system
-
-# Удаление системы
-$ cmd remove.bat
+# Run docker image
+docker run -d -p 3128:3128 --name privoxy-top-proxy baklai/privoxy-top-proxy
 ```
 
-## Лицензия
+Use `http://localhost:3128` proxy in your browser.
+
+## Removal
+
+## License
 
 [MIT](LICENSE)

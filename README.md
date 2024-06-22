@@ -4,7 +4,7 @@
 
 A fast, minimalist proxy system using [Privoxy](https://www.privoxy.org) and [Tor](https://www.torproject.org) for unrestricted internet browsing.
 
-## Installation
+## Installation and running application
 
 Installation is performed from the command line with administrator rights
 
@@ -15,7 +15,10 @@ Installation is performed from the command line with administrator rights
 ### Building and running your application
 
 When you're ready, start your application by running:
-`docker compose up --build`.
+
+```bash
+docker compose up --build
+```
 
 ### Deploying your application to the cloud
 

@@ -7,17 +7,21 @@ FROM ubuntu:latest
 
 # Обновляем пакетный список и устанавливаем Squid
 RUN apt-get update && \
-    apt-get install -y squid && \
+    apt-get upgrade && \
+    apt-get install -y privoxy && \
+    apt-get install -y tor && \
+    apt-get autoremove && \
+    apt-get autoclean && \
     rm -rf /var/lib/apt/lists/*
 
 # Обновляем пакетный список и устанавливаем Squid
-RUN cp /etc/squid/squid.conf /etc/squid/squid.conf.default
+RUN cp /etc/privoxy/config /etc/privoxy/config.default
 
 # Копируем конфигурационный файл Squid (если требуется)
-COPY config/squid.conf /etc/squid/squid.conf
+COPY config/privoxy.conf /etc/privoxy/config
 
 # Указываем порт, который будет использовать Squid
-EXPOSE 3128
+EXPOSE 8118
 
 # Команда для запуска Squid при старте контейнера
-CMD ["squid", "-N", "-d", "1"]
+CMD ["privoxy", "-N", "-d", "1"]

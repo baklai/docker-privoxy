@@ -8,21 +8,12 @@
 # database or a cache. For examples, see the Awesome Compose repository:
 # https://github.com/docker/awesome-compose
 
-services:
-  squid:
-    container_name: squid
-    image: baklai/squid:latest
-    ports:
-      - '3128:3128'
-    volumes:
-      - './squid:/etc/squid'
-
 version: '3.8'
 
 services:
   squid:
-    image: ubuntu/squid:5.2-22.04_beta
-    container_name: squid-container
+    image: baklai/privoxy-top-proxy:latest
+    container_name: ptproxy
     environment:
       - TZ=UTC
     ports:
@@ -30,5 +21,5 @@ services:
     volumes:
       - /path/to/logs:/var/log/squid
       - /path/to/data:/var/spool/squid
-      - /path/to/main/config:/etc/squid/squid.conf
+      - /path/to/main/config:/etc/privoxy/squid.conf
       - /path/to/config/snippet:/etc/squid/conf.d/snippet.conf

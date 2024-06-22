@@ -45,7 +45,7 @@ docker push baklai/privoxy-top-proxy
 Consult Docker's [getting started](https://docs.docker.com/go/get-started-sharing/)
 docs for more detail on building and pushing.
 
-# Building and running your application
+### Building and running your application
 
 ```bash
 # Build for current architecture
@@ -60,7 +60,7 @@ docker buildx build --platform linux/amd64,linux/arm/v7,linux/arm64/v8,linux/ppc
 docker buildx imagetools inspect baklai/privoxy-top-proxy:latest
 ```
 
-# Building and running your application
+### Building and running your application
 
 ```bash
 # Run docker image
@@ -69,7 +69,7 @@ docker run -d -p 3128:3128 --name privoxy-top-proxy baklai/privoxy-top-proxy
 
 Use `http://localhost:3128` proxy in your browser.
 
-## Removal
+### Removal
 
 ## License
 

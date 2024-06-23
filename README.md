@@ -14,18 +14,58 @@ The goal of onion routing was to have a way to use the internet with as much pri
 
 ## Quick Start
 
-The quickest way to get started is using [docker compose](https://docs.docker.com/compose/).
+The quickest way to get started is using bash script.
 
 ```bash
-wget https://raw.githubusercontent.com/baklai/privoxy-tor-proxy/main/compose.yaml
+wget https://raw.githubusercontent.com/baklai/privoxy-tor-proxy/main/proxy-init.sh
 
+# When you're ready, start application by init
+docker compose up --build
+```
+
+## Started is docker compose
+
+The quickest way to get started is using [docker compose](https://docs.docker.com/compose/).
+
+Copy default docker compose file
+
+```bash
+# Copy default docker compose file
+wget https://raw.githubusercontent.com/baklai/privoxy-tor-proxy/main/compose.yaml
+```
+
+or create custom docker compose file `compose.yaml`
+
+```bash
+# Create custom docker compose file
+
+version: '3.8'
+
+services:
+  squid:
+    image: baklai/privoxy-top-proxy:latest
+    container_name: privoxy-top-proxy
+    environment:
+      - TZ=UTC
+    ports:
+      - '3128:3128'
+    volumes:
+      - /path/to/logs:/var/log/privoxy
+      - /path/to/data:/var/spool/privoxy
+      - /path/to/main/config:/etc/privoxy/config
+      - /path/to/config/snippet:/etc/privoxy
+```
+
+Run docker compose to build and start proxy
+
+```bash
 # When you're ready, start application by running
 docker compose up --build
 ```
 
 Access your proxy at `http://localhost:8118`.
 
-## Running application locally
+## Started is locally
 
 ```bash
 # Launch image locally

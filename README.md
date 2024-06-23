@@ -4,11 +4,11 @@
 
 A fast, minimalist proxy system using [Privoxy](https://www.privoxy.org) and [Tor](https://www.torproject.org) for unrestricted internet browsing.
 
-About Privoxy
+**About Privoxy**
 
 Privoxy is a non-caching web proxy with advanced filtering capabilities for enhancing privacy, modifying web page data and HTTP headers, controlling access, and removing ads and other obnoxious Internet junk. Privoxy has a flexible configuration and can be customized to suit individual needs and tastes. It has application for both stand-alone systems and multi-user networks.
 
-About Tor
+**About Tor**
 
 The goal of onion routing was to have a way to use the internet with as much privacy as possible, and the idea was to route traffic through multiple servers and encrypt it each step of the way. This is still a simple explanation for how Tor works today.
 
@@ -25,7 +25,7 @@ docker compose up --build
 
 Access your proxy at `http://localhost:8118`.
 
-### Running application
+## Running application locally
 
 ```bash
 # Launch image locally
@@ -34,7 +34,7 @@ docker run -d --name privoxy-tor-proxy -p 8118:8118 baklai/privoxy-tor-proxy:lat
 
 Access your proxy at `http://localhost:8118`.
 
-#### Parameters
+### Parameters
 
 | Parameter                                | Description                               |
 | ---------------------------------------- | ----------------------------------------- |
@@ -45,7 +45,7 @@ Access your proxy at `http://localhost:8118`.
 | `-v /path/to/config:/etc/privoxy/config` | Main privoxy configuration file           |
 | `-v /path/to/config:/etc/privoxy/`       | Configuration snippets included by config |
 
-#### Testing/Debugging
+### Testing/Debugging
 
 To debug the container:
 

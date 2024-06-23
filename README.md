@@ -4,6 +4,14 @@
 
 A fast, minimalist proxy system using [Privoxy](https://www.privoxy.org) and [Tor](https://www.torproject.org) for unrestricted internet browsing.
 
+About Privoxy
+
+Privoxy is a non-caching web proxy with advanced filtering capabilities for enhancing privacy, modifying web page data and HTTP headers, controlling access, and removing ads and other obnoxious Internet junk. Privoxy has a flexible configuration and can be customized to suit individual needs and tastes. It has application for both stand-alone systems and multi-user networks.
+
+About Tor
+
+The goal of onion routing was to have a way to use the internet with as much privacy as possible, and the idea was to route traffic through multiple servers and encrypt it each step of the way. This is still a simple explanation for how Tor works today.
+
 ## Quick Start
 
 The quickest way to get started is using [docker compose](https://docs.docker.com/compose/).
@@ -15,7 +23,7 @@ wget https://raw.githubusercontent.com/baklai/privoxy-tor-proxy/main/compose.yam
 docker compose up --build
 ```
 
-Use `http://localhost:8118` proxy in your browser.
+Access your proxy at `http://localhost:8118`.
 
 ### Running application
 
@@ -24,7 +32,7 @@ Use `http://localhost:8118` proxy in your browser.
 docker run -d --name privoxy-tor-proxy -p 8118:8118 baklai/privoxy-tor-proxy:latest
 ```
 
-Use `http://localhost:8118` proxy in your browser.
+Access your proxy at `http://localhost:8118`.
 
 #### Parameters
 
@@ -36,6 +44,20 @@ Use `http://localhost:8118` proxy in your browser.
 | `-v /path/to/data:/var/spool/privoxy`    | Volume to store the privoxy cache         |
 | `-v /path/to/config:/etc/privoxy/config` | Main privoxy configuration file           |
 | `-v /path/to/config:/etc/privoxy/`       | Configuration snippets included by config |
+
+#### Testing/Debugging
+
+To debug the container:
+
+```bash
+docker logs -f privoxy-tor-proxy
+```
+
+To get an interactive shell:
+
+```bash
+docker exec -it privoxy-tor-proxy /bin/bash
+```
 
 ## Deploying application to the cloud
 

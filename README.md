@@ -26,6 +26,17 @@ docker run -d --name privoxy-tor-proxy -p 8118:8118 baklai/privoxy-tor-proxy:lat
 
 Use `http://localhost:8118` proxy in your browser.
 
+#### Parameters
+
+| Parameter                                | Description                               |
+| ---------------------------------------- | ----------------------------------------- |
+| `-e TZ=UTC`                              | Timezone                                  |
+| `-p 8118:8118`                           | Expose the proxy service                  |
+| `-v /path/to/logs:/var/log/privoxy`      | Volume to store privoxy logs              |
+| `-v /path/to/data:/var/spool/privoxy`    | Volume to store the privoxy cache         |
+| `-v /path/to/config:/etc/privoxy/config` | Main privoxy configuration file           |
+| `-v /path/to/config:/etc/privoxy/`       | Configuration snippets included by config |
+
 ## Deploying application to the cloud
 
 First, build docker image, e.g.:

@@ -45,7 +45,7 @@ Access your proxy at `http://localhost:8118`.
 | `-v /path/to/config:/etc/privoxy/config` | Main privoxy configuration file           |
 | `-v /path/to/config:/etc/privoxy/`       | Configuration snippets included by config |
 
-### Testing/Debugging
+## Testing/Debugging
 
 To debug the container:
 

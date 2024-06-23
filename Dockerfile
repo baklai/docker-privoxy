@@ -18,7 +18,7 @@ RUN apt-get update && \
 RUN cp /etc/privoxy/config /etc/privoxy/config.default
 
 # Копируем конфигурационный файл Squid (если требуется)
-COPY config/privoxy.conf /etc/privoxy/config
+COPY config/privoxy/config /etc/privoxy/config
 
 # Указываем порт, который будет использовать Squid
 EXPOSE 8118

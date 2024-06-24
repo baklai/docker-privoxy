@@ -17,7 +17,7 @@ The goal of onion routing was to have a way to use the internet with as much pri
 The quickest way to get started is using bash script.
 
 ```bash
-wget https://raw.githubusercontent.com/baklai/privoxy-tor-proxy/main/proxy-init.sh
+wget https://raw.githubusercontent.com/baklai/proxy/main/proxy-init.sh
 
 # When you're ready, start application by init
 docker compose up --build
@@ -31,7 +31,7 @@ Copy default docker compose file
 
 ```bash
 # Copy default docker compose file
-wget https://raw.githubusercontent.com/baklai/privoxy-tor-proxy/main/compose.yaml
+wget https://raw.githubusercontent.com/baklai/proxy/main/compose.yaml
 ```
 
 or create custom docker compose file `compose.yaml`
@@ -43,8 +43,8 @@ version: '3.8'
 
 services:
   squid:
-    image: baklai/privoxy-top-proxy:latest
-    container_name: privoxy-top-proxy
+    image: baklai/proxy:latest
+    container_name: proxy
     environment:
       - TZ=UTC
     ports:
@@ -69,7 +69,7 @@ Access your proxy at `http://localhost:8118`.
 
 ```bash
 # Launch image locally
-docker run -d --name privoxy-tor-proxy -p 8118:8118 baklai/privoxy-tor-proxy:latest
+docker run -d --name proxy -p 8118:8118 baklai/proxy:latest
 ```
 
 Access your proxy at `http://localhost:8118`.
@@ -90,13 +90,13 @@ Access your proxy at `http://localhost:8118`.
 To debug the container:
 
 ```bash
-docker logs -f privoxy-tor-proxy
+docker logs -f proxy
 ```
 
 To get an interactive shell:
 
 ```bash
-docker exec -it privoxy-tor-proxy /bin/bash
+docker exec -it proxy /bin/bash
 ```
 
 ## Deploying application to the cloud
@@ -104,7 +104,7 @@ docker exec -it privoxy-tor-proxy /bin/bash
 First, build docker image, e.g.:
 
 ```bash
-docker build -t baklai/privoxy-tor-proxy .
+docker build -t baklai/proxy .
 ```
 
 If your cloud uses a different CPU architecture than your development
@@ -112,13 +112,13 @@ machine (e.g., you are on a Mac M1 and your cloud provider is amd64),
 you'll want to build the image for that platform, e.g.:
 
 ```bash
-docker build --platform=linux/amd64,linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x -t baklai/privoxy-tor-proxy .
+docker build --platform=linux/amd64,linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x -t baklai/proxy .
 ```
 
 Then, push it to your registry, e.g.
 
 ```bash
-docker push baklai/privoxy-tor-proxy
+docker push baklai/proxy
 ```
 
 Consult Docker's [getting started](https://docs.docker.com/go/get-started-sharing/)

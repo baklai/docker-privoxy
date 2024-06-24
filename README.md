@@ -27,6 +27,8 @@ wget https://raw.githubusercontent.com/baklai/proxy/main/proxy-init.ps1
 ./proxy-init.ps1
 ```
 
+Access your proxy at `http://localhost:8118`.
+
 ## Started is docker compose
 
 The quickest way to get started is using [docker compose](https://docs.docker.com/compose/).

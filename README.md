@@ -19,14 +19,11 @@ The quickest way to get started is using bash script.
 ```bash
 # Linux
 wget https://raw.githubusercontent.com/baklai/proxy/main/proxy-init.sh
-
 chmod +x proxy-init.sh
-
 ./proxy-init.sh
 
 # Windows
 wget https://raw.githubusercontent.com/baklai/proxy/main/proxy-init.ps1
-
 ./proxy-init.ps1
 ```
 

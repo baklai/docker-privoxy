@@ -10,8 +10,9 @@ RUN apt-get update && \
     apt-get upgrade && \
     apt-get install -y privoxy && \
     apt-get install -y tor && \
-    apt-get autoremove && \
+    apt-get clean && \
     apt-get autoclean && \
+    apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
 
 # Обновляем пакетный список и устанавливаем Squid
@@ -21,6 +22,13 @@ RUN cp /etc/tor/torrc /etc/tor/torrc.default
 
 # Копируем конфигурационный файл Squid (если требуется)
 COPY config/privoxy/config /etc/privoxy/config
+
+# Настройка Tor
+RUN echo "SOCKSPort 0.0.0.0:9050" >> /etc/tor/torrc
+
+# Настройка Privoxy
+RUN echo "forward-socks5t / 127.0.0.1:9050 ." >> /etc/privoxy/config && \
+    echo "listen-address  0.0.0.0:8118" >> /etc/privoxy/config
 
 # Указываем порт, который будет использовать Squid
 EXPOSE 8118

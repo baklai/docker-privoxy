@@ -20,11 +20,14 @@ The quickest way to get started is using bash script.
 # Linux
 wget https://raw.githubusercontent.com/baklai/proxy/main/proxy-init.sh
 
+chmod +x proxy-init.sh
+
+./proxy-init.sh
+
 # Windows
 wget https://raw.githubusercontent.com/baklai/proxy/main/proxy-init.ps1
 
-# When you're ready, start application by init
-docker compose up --build
+./proxy-init.ps1
 ```
 
 ## Started is docker compose

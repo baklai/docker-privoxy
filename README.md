@@ -17,7 +17,11 @@ The goal of onion routing was to have a way to use the internet with as much pri
 The quickest way to get started is using bash script.
 
 ```bash
+# Linux
 wget https://raw.githubusercontent.com/baklai/proxy/main/proxy-init.sh
+
+# Windows
+wget https://raw.githubusercontent.com/baklai/proxy/main/proxy-init.ps1
 
 # When you're ready, start application by init
 docker compose up --build

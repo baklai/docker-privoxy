@@ -17,6 +17,8 @@ RUN apt-get update && \
 # Обновляем пакетный список и устанавливаем Squid
 RUN cp /etc/privoxy/config /etc/privoxy/config.default
 
+RUN cp /etc/tor/torrc /etc/tor/torrc.default
+
 # Копируем конфигурационный файл Squid (если требуется)
 COPY config/privoxy/config /etc/privoxy/config
 

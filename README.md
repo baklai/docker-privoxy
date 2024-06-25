@@ -105,6 +105,13 @@ To get an interactive shell:
 docker exec -it proxy /bin/bash
 ```
 
+Status service an interactive shell
+
+```bash
+docker exec -it proxy service tor status
+docker exec -it proxy service privoxy status
+```
+
 ## Deploying application to the cloud
 
 First, build docker image, e.g.:

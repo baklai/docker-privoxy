@@ -13,8 +13,6 @@ RUN apt-get update && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
 
-RUN service tor start && service privoxy start
-
 RUN cp /etc/tor/torrc /etc/tor/torrc.default
 RUN echo "SocksPort 9050 # Default: Bind to localhost:9050 for local connections." > /etc/tor/torrc
 
@@ -50,8 +48,6 @@ RUN echo "# Sample Configuration File for Privoxy" > /etc/privoxy/config && \
     echo "tolerate-pipelining 1 # Whether or not pipelined requests should be served." >> /etc/privoxy/config && \
     echo "socket-timeout 300 # Number of seconds after which a socket times out if no data is received." >> /etc/privoxy/config
 
-RUN service tor restart && service privoxy restart
-
 EXPOSE 8118
 
-CMD ["privoxy", "--no-daemon", "--user", "privoxy", "/etc/privoxy/config"]
+CMD ["sh", "-c", "service tor start && privoxy --no-daemon /etc/privoxy/config"]

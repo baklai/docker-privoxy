@@ -84,7 +84,6 @@ Access your proxy at `http://localhost:8118`.
 
 | Parameter                                | Description                               |
 | ---------------------------------------- | ----------------------------------------- |
-| `-e TZ=UTC`                              | Timezone                                  |
 | `-p 8118:8118`                           | Expose the proxy service                  |
 | `-v /path/to/logs:/var/log/privoxy`      | Volume to store privoxy logs              |
 | `-v /path/to/data:/var/spool/privoxy`    | Volume to store the privoxy cache         |
@@ -118,6 +117,9 @@ First, build docker image, e.g.:
 
 ```bash
 docker build -t baklai/proxy .
+
+# Disable Tor Proxy
+docker build --build-arg TOR=off -t baklai/proxy .
 ```
 
 If your cloud uses a different CPU architecture than your development
@@ -126,6 +128,9 @@ you'll want to build the image for that platform, e.g.:
 
 ```bash
 docker build --platform=linux/amd64,linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x -t baklai/proxy .
+
+# Disable Tor Proxy
+docker build --build-arg TOR=off --platform=linux/amd64,linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x -t baklai/proxy .
 ```
 
 Then, push it to your registry, e.g.

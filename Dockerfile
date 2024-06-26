@@ -4,7 +4,7 @@
 
 FROM debian:latest
 
-ARG TOR="off"
+ARG TOR="on"
 
 RUN apt-get update && \
     apt-get upgrade -y && \
@@ -38,7 +38,6 @@ RUN echo "# Sample Configuration File for Privoxy" > /etc/privoxy/config && \
     echo "enable-edit-actions 0 # Whether or not the web-based actions file editor may be used" >> /etc/privoxy/config && \
     echo "enforce-blocks 0 # Whether the user is allowed to ignore blocks and can go there anyway" >> /etc/privoxy/config && \
     echo "buffer-limit 4096 # Maximum size of the buffer for content filtering." >> /etc/privoxy/config && \
-    echo "buffer-limit 4096 # Maximum size of the buffer for content filtering." >> /etc/privoxy/config && \
     echo "enable-proxy-authentication-forwarding 0 # Whether or not proxy authentication through Privoxy should work." >> /etc/privoxy/config && \
     echo "forwarded-connect-retries 0 # How often Privoxy retries if a forwarded connection request fails." >> /etc/privoxy/config && \
     echo "accept-intercepted-requests 0 # Whether intercepted requests should be treated as valid." >> /etc/privoxy/config && \
@@ -48,7 +47,7 @@ RUN echo "# Sample Configuration File for Privoxy" > /etc/privoxy/config && \
     echo "tolerate-pipelining 1 # Whether or not pipelined requests should be served." >> /etc/privoxy/config && \
     echo "socket-timeout 300 # Number of seconds after which a socket times out if no data is received." >> /etc/privoxy/config
 
-RUN if [ "${TOR}" = "on" ] ; then echo "forward-socks5t / localhost:9050" >> /etc/privoxy/config ; fi
+RUN if [ "${TOR}" = "on" ] ; then echo "forward-socks5t / localhost:9050 ." >> /etc/privoxy/config ; fi
 
 EXPOSE 8118
 

@@ -1,6 +1,6 @@
 # Privoxy & Tor Proxy
 
-![Privoxy + Tor](preview.png)
+![Docker Privoxy & Tor Proxy](https://raw.githubusercontent.com/baklai/proxy/main/preview.png)
 
 A fast, minimalist proxy system using [Privoxy](https://www.privoxy.org) and [Tor](https://www.torproject.org) for unrestricted internet browsing.
 

@@ -9,8 +9,8 @@
 # https://github.com/docker/awesome-compose
 
 services:
-  proxy:
-    image: baklai/proxy:latest
+  privoxy:
+    image: baklai/privoxy:latest
     ports:
       - '8118:8118'
     volumes:

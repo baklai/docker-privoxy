@@ -4,18 +4,13 @@
 
 FROM debian:latest
 
-ARG TOR="on"
-
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y tor privoxy && \
+    apt-get install -y privoxy && \
     apt-get clean && \
     apt-get autoclean && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
-
-RUN cp /etc/tor/torrc /etc/tor/torrc.default
-RUN echo "SocksPort 9050 # Default: Bind to localhost:9050 for local connections." > /etc/tor/torrc
 
 RUN cp /etc/privoxy/config /etc/privoxy/config.default
 RUN echo "# Sample Configuration File for Privoxy" > /etc/privoxy/config && \
@@ -47,8 +42,8 @@ RUN echo "# Sample Configuration File for Privoxy" > /etc/privoxy/config && \
     echo "tolerate-pipelining 1 # Whether or not pipelined requests should be served." >> /etc/privoxy/config && \
     echo "socket-timeout 300 # Number of seconds after which a socket times out if no data is received." >> /etc/privoxy/config
 
-RUN if [ "${TOR}" = "on" ] ; then echo "forward-socks5t / localhost:9050 ." >> /etc/privoxy/config ; fi
+RUN if [ ${FORWARD-SOCKS5T} ] ; then echo "forward-socks5t / ${FORWARD-SOCKS5T} ." >> /etc/privoxy/config ; fi
 
 EXPOSE 8118
 
-CMD ["sh", "-c", "service tor start && privoxy --no-daemon /etc/privoxy/config"]
+CMD ["sh", "-c", "privoxy --no-daemon /etc/privoxy/config"]

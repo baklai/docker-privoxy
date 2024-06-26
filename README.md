@@ -127,10 +127,16 @@ machine (e.g., you are on a Mac M1 and your cloud provider is amd64),
 you'll want to build the image for that platform, e.g.:
 
 ```bash
-docker build --platform=linux/amd64,linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x -t baklai/proxy .
+# Make sure you have buildx installed. If it is not installed, install it as follows
+docker buildx install
+
+# Build and switch to buildx builder
+docker buildx create --name multibuilder --use
+
+docker buildx build --platform linux/amd64,linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x -t baklai/proxy .
 
 # Disable Tor Proxy
-docker build --build-arg TOR=off --platform=linux/amd64,linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x -t baklai/proxy .
+docker buildx build --build-arg TOR=off --platform linux/amd64,linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x -t baklai/proxy .
 ```
 
 Then, push it to your registry, e.g.

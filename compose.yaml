@@ -8,17 +8,12 @@
 # database or a cache. For examples, see the Awesome Compose repository:
 # https://github.com/docker/awesome-compose
 
-version: '3.8'
-
 services:
-  squid:
+  proxy:
     image: baklai/proxy:latest
-    container_name: proxy
-    environment:
-      - TZ=UTC
     ports:
       - '8118:8118'
     volumes:
-      - /path/to/logs:/var/log/privoxy
-      - /path/to/data:/var/spool/privoxy
-      - /path/to/main/config:/etc/privoxy/config
+      - ./var/log/privoxy:/var/log/privoxy
+      - ./etc/privoxy:/etc/privoxy
+      - ./etc/tor:/etc/tor

@@ -45,21 +45,15 @@ or create custom docker compose file `compose.yaml`
 ```bash
 # Create custom docker compose file
 
-version: '3.8'
-
 services:
-  squid:
+  proxy:
     image: baklai/proxy:latest
-    container_name: proxy
-    environment:
-      - TZ=UTC
     ports:
-      - '3128:3128'
+      - '8118:8118'
     volumes:
-      - /path/to/logs:/var/log/privoxy
-      - /path/to/data:/var/spool/privoxy
-      - /path/to/main/config:/etc/privoxy/config
-      - /path/to/config/snippet:/etc/privoxy
+      - ./var/log/privoxy:/var/log/privoxy
+      - ./etc/privoxy:/etc/privoxy
+      - ./etc/tor:/etc/tor
 ```
 
 Run docker compose to build and start proxy

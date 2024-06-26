@@ -111,7 +111,7 @@ docker exec -it proxy service tor status
 docker exec -it proxy service privoxy status
 ```
 
-## Deploying application to the cloud
+## Build and Deploying application to the local or cloud
 
 First, build docker image, e.g.:
 
@@ -120,6 +120,12 @@ docker build -t baklai/proxy .
 
 # Disable Tor Proxy
 docker build --build-arg TOR=off -t baklai/proxy .
+```
+
+Then, push it to your registry, e.g.
+
+```bash
+docker push baklai/proxy
 ```
 
 If your cloud uses a different CPU architecture than your development
@@ -132,17 +138,31 @@ docker buildx install
 
 # Build and switch to buildx builder
 docker buildx create --name multibuilder --use
-
-docker buildx build --platform linux/amd64,linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x -t baklai/proxy .
-
-# Disable Tor Proxy
-docker buildx build --build-arg TOR=off --platform linux/amd64,linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x -t baklai/proxy .
 ```
 
-Then, push it to your registry, e.g.
+```bash
+# Use Docker registry
+docker login
+```
+
+Default use Privoxy & Tor proxy
 
 ```bash
-docker push baklai/proxy
+# Uploading an image to local Docker
+docker buildx build --platform linux/amd64,linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x -t baklai/proxy --load .
+
+# Uploading an image to the Docker registry
+docker buildx build --platform linux/amd64,linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x -t baklai/proxy --push .
+```
+
+Disable Tor Proxy
+
+```bash
+# Uploading an image to local Docker
+docker buildx build --build-arg TOR=off --platform linux/amd64,linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x -t baklai/proxy --load .
+
+# Uploading an image to the Docker registry
+docker buildx build --build-arg TOR=off --platform linux/amd64,linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x -t baklai/proxy --push .
 ```
 
 Consult Docker's [getting started](https://docs.docker.com/go/get-started-sharing/)

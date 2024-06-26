@@ -18,12 +18,12 @@ The quickest way to get started is using bash script.
 
 ```bash
 # Linux
-wget https://raw.githubusercontent.com/baklai/proxy/main/proxy-init.sh
+wget -O proxy-init.sh https://raw.githubusercontent.com/baklai/proxy/main/proxy-init.sh
 chmod +x proxy-init.sh
 ./proxy-init.sh
 
 # Windows
-wget https://raw.githubusercontent.com/baklai/proxy/main/proxy-init.ps1
+wget -O proxy-init.ps1 https://raw.githubusercontent.com/baklai/proxy/main/proxy-init.ps1
 ./proxy-init.ps1
 ```
 
@@ -37,7 +37,7 @@ Copy default docker compose file
 
 ```bash
 # Copy default docker compose file
-wget https://raw.githubusercontent.com/baklai/proxy/main/compose.yaml
+wget -O compose.yaml https://raw.githubusercontent.com/baklai/proxy/main/compose.yaml
 ```
 
 or create custom docker compose file `compose.yaml`

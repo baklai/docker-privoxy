@@ -69,7 +69,7 @@ Run docker compose to build and start proxy
 docker compose up -d --build
 
 # Since this application was started using Docker Compose, it's easy to tear it all down when you're done.
-docker compose down
+docker compose down --volumes
 ```
 
 Access your proxy at `http://localhost:8118`.

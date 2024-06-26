@@ -4,10 +4,11 @@
 
 FROM debian:latest
 
+ARG TOR="off"
+
 RUN apt-get update && \
-    apt-get upgrade && \
-    apt-get install -y privoxy && \
-    apt-get install -y tor && \
+    apt-get upgrade -y && \
+    apt-get install -y tor privoxy && \
     apt-get clean && \
     apt-get autoclean && \
     apt-get autoremove -y && \
@@ -39,7 +40,6 @@ RUN echo "# Sample Configuration File for Privoxy" > /etc/privoxy/config && \
     echo "buffer-limit 4096 # Maximum size of the buffer for content filtering." >> /etc/privoxy/config && \
     echo "buffer-limit 4096 # Maximum size of the buffer for content filtering." >> /etc/privoxy/config && \
     echo "enable-proxy-authentication-forwarding 0 # Whether or not proxy authentication through Privoxy should work." >> /etc/privoxy/config && \
-    echo "forward-socks5t / localhost:9050 . # To which parent HTTP proxy specific requests should be routed." >> /etc/privoxy/config && \
     echo "forwarded-connect-retries 0 # How often Privoxy retries if a forwarded connection request fails." >> /etc/privoxy/config && \
     echo "accept-intercepted-requests 0 # Whether intercepted requests should be treated as valid." >> /etc/privoxy/config && \
     echo "allow-cgi-request-crunching 0 # Whether requests to Privoxy's CGI pages can be blocked or redirected." >> /etc/privoxy/config && \
@@ -47,6 +47,8 @@ RUN echo "# Sample Configuration File for Privoxy" > /etc/privoxy/config && \
     echo "keep-alive-timeout 5 # Number of seconds after which an open connection will no longer be reused." >> /etc/privoxy/config && \
     echo "tolerate-pipelining 1 # Whether or not pipelined requests should be served." >> /etc/privoxy/config && \
     echo "socket-timeout 300 # Number of seconds after which a socket times out if no data is received." >> /etc/privoxy/config
+
+RUN if [ "${TOR}" = "on" ] ; then echo "forward-socks5t / localhost:9050" >> /etc/privoxy/config ; fi
 
 EXPOSE 8118
 

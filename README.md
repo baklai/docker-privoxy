@@ -1,4 +1,4 @@
-# Docker Privoxy Proxy
+# Docker: Privoxy proxy
 
 ![Docker Privoxy Proxy](https://raw.githubusercontent.com/baklai/docker-privoxy/main/preview.png)
 

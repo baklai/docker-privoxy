@@ -79,13 +79,12 @@ Access your proxy at `http://localhost:8118`.
 
 ### Parameters
 
-| Parameter                                | Description                               |
-| ---------------------------------------- | ----------------------------------------- |
-| `-p 8118:8118`                           | Expose the proxy service                  |
-| `-v /path/to/logs:/var/log/privoxy`      | Volume to store privoxy logs              |
-| `-v /path/to/data:/var/spool/privoxy`    | Volume to store the privoxy cache         |
-| `-v /path/to/config:/etc/privoxy/config` | Main privoxy configuration file           |
-| `-v /path/to/config:/etc/privoxy/`       | Configuration snippets included by config |
+| Parameter                                     | Description                     |
+| --------------------------------------------- | ------------------------------- |
+| `-p 8118:8118`                                | Expose the proxy service        |
+| `-v ./var/log/privoxy:/var/log/privoxy`       | Volume to store privoxy logs    |
+| `-v ./etc/privoxy/config:/etc/privoxy/config` | Main privoxy configuration file |
+
 
 ## Testing/Debugging
 

@@ -15,5 +15,4 @@ services:
       - '8118:8118'
     volumes:
       - ./var/log/privoxy:/var/log/privoxy
-      - ./etc/privoxy:/etc/privoxy
-      - ./etc/tor:/etc/tor
+      - ./etc/privoxy/config:/etc/privoxy/config

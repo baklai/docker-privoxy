@@ -103,7 +103,7 @@ Status service an interactive shell
 docker exec -it privoxy service privoxy status
 ```
 
-## Build and Deploying application to the local or cloud
+## Build images and Deploying application
 
 First, build docker image, e.g.:
 

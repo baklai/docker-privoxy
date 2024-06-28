@@ -127,6 +127,9 @@ docker buildx install
 
 # Build and switch to buildx builder
 docker buildx create --name multibuilder --use
+
+# Start the builder instance
+docker buildx inspect --bootstrap
 ```
 
 ```bash
@@ -136,10 +139,13 @@ docker login
 
 ```bash
 # Uploading an image to local Docker
-docker buildx build --platform linux/amd64,linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x -t baklai/privoxy --load .
+docker buildx build --platform linux/amd64,linux/i386,linux/arm/v5,linux/arm/v6,linux/arm/v7,linux/arm64,linux/ppc64le,linux/s390x -t baklai/privoxy . --load
 
 # Uploading an image to the Docker registry
-docker buildx build --platform linux/amd64,linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x -t baklai/privoxy --push .
+docker buildx build --platform linux/amd64,linux/i386,linux/arm/v5,linux/arm/v6,linux/arm/v7,linux/arm64,linux/ppc64le,linux/s390x -t baklai/privoxy . --push
+
+# After the build completes, you can check the image manifest to verify that it has been built for multiple platforms.
+docker manifest inspect baklai/privoxy
 ```
 
 Consult Docker's [getting started](https://docs.docker.com/go/get-started-sharing/)

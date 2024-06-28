@@ -14,5 +14,5 @@ services:
     ports:
       - '8118:8118'
     volumes:
-      - ./var/log/privoxy:/var/log/privoxy
-      - ./etc/privoxy/config:/etc/privoxy/config
+      - /path/to/logs:/var/log/privoxy
+      - /path/to/config:/etc/privoxy/config

@@ -47,8 +47,8 @@ services:
     ports:
       - '8118:8118'
     volumes:
-      - ./var/log/privoxy:/var/log/privoxy
-      - ./etc/privoxy:/etc/privoxy
+      - /path/to/logs:/var/log/privoxy
+      - /path/to/config:/etc/privoxy/config
 ```
 
 Run docker compose to build and start proxy
@@ -77,11 +77,11 @@ Access your proxy at `http://localhost:8118`.
 
 ### Parameters
 
-| Parameter                                     | Description                     |
-| --------------------------------------------- | ------------------------------- |
-| `-p 8118:8118`                                | Expose the proxy service        |
-| `-v ./var/log/privoxy:/var/log/privoxy`       | Volume to store privoxy logs    |
-| `-v ./etc/privoxy/config:/etc/privoxy/config` | Main privoxy configuration file |
+| Parameter                                | Description                     |
+| ---------------------------------------- | ------------------------------- |
+| `-p 8118:8118`                           | Expose the proxy service        |
+| `-v /path/to/logs:/var/log/privoxy`      | Volume to store privoxy logs    |
+| `-v /path/to/config:/etc/privoxy/config` | Main privoxy configuration file |
 
 ## Testing/Debugging
 

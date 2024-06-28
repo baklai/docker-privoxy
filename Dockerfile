@@ -42,8 +42,6 @@ RUN echo "# Sample Configuration File for Privoxy" > /etc/privoxy/config && \
     echo "tolerate-pipelining 1 # Whether or not pipelined requests should be served." >> /etc/privoxy/config && \
     echo "socket-timeout 300 # Number of seconds after which a socket times out if no data is received." >> /etc/privoxy/config
 
-RUN if [ ${FORWARD-SOCKS5T} ] ; then echo "forward-socks5t / ${FORWARD-SOCKS5T} ." >> /etc/privoxy/config ; fi
-
 EXPOSE 8118
 
 CMD ["sh", "-c", "privoxy --no-daemon /etc/privoxy/config"]
